@@ -62,16 +62,15 @@ const ProjectsCarousel: React.FC = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') { // Verifica se está no lado do cliente
       const handleResize = () => {
-        setItemsPerPage(3);
+        setItemsPerPage(window.innerWidth < 768 ? 1 : 3); // Ajusta o número de itens por página com base no tamanho da janela
       };
-  
+
       handleResize(); // Executa a função uma vez para definir o valor inicial
-  
+
       window.addEventListener('resize', handleResize); // Adiciona o listener de resize
       return () => window.removeEventListener('resize', handleResize); // Remove o listener no cleanup
     }
   }, []);
-  
 
   return (
     <div className={styles.carouselContainer}>
@@ -80,25 +79,27 @@ const ProjectsCarousel: React.FC = () => {
       </button>
 
       <div className={styles.carousel}>
-        {projects.slice(start, end).map((client, index) => (
+        {projects.slice(start, end).map((project, index) => (
           <div
             key={index}
             className={styles.clientCard}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => window.open(project.link, '_blank')} // Redireciona ao clicar no card
+            style={{ cursor: 'pointer' }} // Mostra o ponteiro de link ao passar o mouse
           >
             <Image
-              src={client.logo}
-              alt={client.name}
+              src={project.logo}
+              alt={project.name}
               width={120}
               height={120}
               style={{ objectFit: 'contain' }} // Atualizando o objectFit com a nova API
             />  
 
             <div className={styles.clientInfo}>
-              <h3>{client.name}</h3>
+              <h3>{project.name}</h3>
               <p className={hoveredIndex === index ? styles.showDescription : ''}>
-                {client.description}
+                {project.description}
               </p>
             </div>
           </div>
