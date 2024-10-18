@@ -45,7 +45,10 @@ const clients = [
 const ClientsCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [itemsPerPage, setItemsPerPage] = useState(3); 
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const autoScrollDelay = 3000;
 
   const start = currentIndex * itemsPerPage;
@@ -73,26 +76,64 @@ const ClientsCarousel: React.FC = () => {
     }, autoScrollDelay);
 
     return () => clearInterval(autoScroll);
-  }, [autoScrollDelay]);
+  }, [autoScrollDelay, currentIndex, itemsPerPage]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') { // Verifica se está no lado do cliente
+    if (typeof window !== 'undefined') {
       const handleResize = () => {
-        setItemsPerPage(window.innerWidth < 768 ? 1 : 3); // Ajusta o número de itens por página com base no tamanho da janela
+        const mobile = window.innerWidth < 768;
+        setItemsPerPage(mobile ? 1 : 3);
+        setIsMobile(mobile);
       };
 
-      handleResize(); // Executa a função uma vez para definir o valor inicial
+      handleResize();
 
-      window.addEventListener('resize', handleResize); // Adiciona o listener de resize
-      return () => window.removeEventListener('resize', handleResize); // Remove o listener no cleanup
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }
   }, []);
 
+  // Detectar início do toque
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  // Detectar fim do toque e decidir se vai para a direita ou esquerda
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart !== null && touchEnd !== null) {
+      const swipeDistance = touchStart - touchEnd;
+      const minSwipeDistance = 50; // Distância mínima para considerar um swipe
+
+      if (swipeDistance > minSwipeDistance) {
+        next(); // Swipe para a esquerda (ir para o próximo)
+      }
+
+      if (swipeDistance < -minSwipeDistance) {
+        prev(); // Swipe para a direita (voltar para o anterior)
+      }
+    }
+
+    // Resetar os valores de toque após o swipe
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
-    <div className={styles.carouselContainer}>
-      <button className={styles.navButton} onClick={prev}>
-        &#9664;
-      </button>
+    <div
+      className={styles.carouselContainer}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {!isMobile && (
+        <button className={styles.navButton} onClick={prev}>
+          &#9664;
+        </button>
+      )}
 
       <div className={styles.carousel}>
         {clients.slice(start, end).map((client, index) => (
@@ -101,19 +142,19 @@ const ClientsCarousel: React.FC = () => {
             className={styles.clientCard}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => window.open(client.link, '_blank')} // Redireciona ao clicar no card
-            style={{ cursor: 'pointer' }} // Muda o cursor ao passar o mouse, indicando que é clicável
+            style={{ cursor: 'pointer' }}
           >
             <Image
               src={client.logo}
               alt={client.name}
               width={120}
               height={120}
-              style={{ objectFit: 'contain' }} // Ajusta a imagem ao container
+              style={{ objectFit: 'contain' }}
             />
+
             <div className={styles.clientInfo}>
               <h3>{client.name}</h3>
-              <p className={hoveredIndex === index ? styles.showDescription : ''}>
+              <p className={isMobile || hoveredIndex === index ? styles.showDescription : ''}>
                 {client.description}
               </p>
             </div>
@@ -121,9 +162,11 @@ const ClientsCarousel: React.FC = () => {
         ))}
       </div>
 
-      <button className={styles.navButton} onClick={next}>
-        &#9654;
-      </button>
+      {!isMobile && (
+        <button className={styles.navButton} onClick={next}>
+          &#9654;
+        </button>
+      )}
 
       <div className={styles.dots}>
         {Array(Math.ceil(clients.length / itemsPerPage))
