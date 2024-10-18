@@ -14,15 +14,15 @@ const projects = [
   { 
     name: 'Pizzaria Backend', 
     logo: '/imagesGeneral/pizzaria.png', 
-    link: 'https://pizzaria-backend.vercel.app/', 
+    link: '#', 
     github: 'https://github.com/matheussouza17/Pizzaria-BackEnd',
     description: 'A complete system for managing a pizzeria, including orders, inventory, and customer management.'
   },
   { 
     name: 'Invoice Workflow', 
     logo: '/imagesGeneral/workflow.png', 
-    link: 'https://workflow-system.vercel.app/', 
-    github: 'https://github.com/matheussouza17/Workflows_BE', 
+    link: '#', 
+    github: 'https://github.com/matheussouza17?tab=repositories&q=Workflows', 
     description: 'A system for managing invoice approvals, having approval levels and permissions.'
   },
 ];
@@ -61,15 +61,15 @@ const ProjectsCarousel: React.FC = () => {
   }, [autoScrollDelay]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') { // Verifica se está no lado do cliente
+    if (typeof window !== 'undefined') { 
       const handleResize = () => {
-        setItemsPerPage(window.innerWidth < 768 ? 1 : 3); // Ajusta o número de itens por página com base no tamanho da janela
+        setItemsPerPage(window.innerWidth < 768 ? 1 : 3); 
       };
 
-      handleResize(); // Executa a função uma vez para definir o valor inicial
+      handleResize();
 
-      window.addEventListener('resize', handleResize); // Adiciona o listener de resize
-      return () => window.removeEventListener('resize', handleResize); // Remove o listener no cleanup
+      window.addEventListener('resize', handleResize); 
+      return () => window.removeEventListener('resize', handleResize); 
     }
   }, []);
 
@@ -86,7 +86,7 @@ const ProjectsCarousel: React.FC = () => {
             className={styles.clientCard}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            style={{ cursor: 'pointer' }} // Mostra o ponteiro de link ao passar o mouse
+            style={{ cursor: 'pointer' }}
           >
             <Image
               src={project.logo}
@@ -101,18 +101,16 @@ const ProjectsCarousel: React.FC = () => {
               <p className={hoveredIndex === index ? styles.showDescription : ''}>
                 {project.description}
               </p>
-
-              {/* Botões para acessar o GitHub e o Projeto */}
               <div className={styles.buttonsContainer}>
                 <button
                   className={styles.projectButton}
-                  onClick={() => window.open(project.link, '_blank')} // Link para o projeto em produção
+                  onClick={() => window.open(project.link, '_blank')} 
                 >
                   Ver Projeto
                 </button>
                 <button
                   className={styles.githubButton}
-                  onClick={() => window.open(project.github, '_blank')} // Link para o GitHub
+                  onClick={() => window.open(project.github, '_blank')} 
                 >
                   Ver GitHub
                 </button>

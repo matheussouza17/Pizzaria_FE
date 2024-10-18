@@ -95,12 +95,12 @@ const CertificationCarousel: React.FC = () => {
   }, [autoScrollDelay]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') { // Garante que está no lado do cliente
+    if (typeof window !== 'undefined') { 
       const handleResize = () => {
-        setItemsPerPage(window.innerWidth < 768 ? 1 : 3); // Ajusta o número de itens por página com base no tamanho da janela
+        setItemsPerPage(window.innerWidth < 768 ? 1 : 3);
       };
 
-      handleResize(); // Chama uma vez para definir o valor inicial
+      handleResize(); 
 
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
@@ -120,8 +120,8 @@ const CertificationCarousel: React.FC = () => {
             className={styles.clientCard}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => window.open(certification.link, '_blank')} // Redireciona ao clicar no card
-            style={{ cursor: 'pointer' }} // Mostra o ponteiro de link ao passar o mouse
+            onClick={() => window.open(certification.link, '_blank')}
+            style={{ cursor: 'pointer' }}
           >
             <Image
               src={certification.logo}

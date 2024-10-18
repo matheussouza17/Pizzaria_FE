@@ -7,19 +7,19 @@ const clients = [
   { 
     name: 'Benfica', 
     logo: '/imagesClientOt/benfica-logo.png', 
-    description: 'Developed custom Outsystems solutions for their operations.',
+    description: 'Maintenance of member systems in Outsystems.',
     link: 'https://www.slbenfica.pt/' // URL de exemplo
   },
   { 
     name: 'Banco CTT', 
     logo: '/imagesClientOt/banco-ctt-logo.png', 
-    description: 'Implemented banking workflows in Outsystems.',
+    description: 'Maintenance and development of credit approval and simulation workflow systems in Outsystems.',
     link: 'https://www.bancoctt.pt/' // URL de exemplo
   },
   { 
     name: 'Fundação José Neves', 
     logo: '/imagesClientOt/fjn-logo.png', 
-    description: 'Built educational platforms using Outsystems.',
+    description: 'ISA maintenance and development, financial support for students in Outsystems.',
     link: 'https://www.joseneves.org/' // URL de exemplo
   },
   { 
