@@ -26,10 +26,20 @@ export default function Home() {
       <section id="about" className={styles.about}>
         <h2>About Me</h2>
         <p>
-          I'm a passionate developer specializing in Outsystems and backend development using Node.js. 
-          I enjoy working on innovative projects and continuously expanding my skills.
+          Hello,<br /><br />
+          I am passionate about development and love creating new applications, innovating, and feeling like I'm building something meaningful. 
+          For me, it's not just about contributing to a company; it's about enabling people to make their workdays less stressful through the tools I create. 
+          I thrive on novelty and embrace new challenges. In recent years, life has taught me the value of adaptability, and development offers that flexibility, 
+          which is why I am so passionate about it.<br /><br />
+          Currently, I work as an OutSystems Developer, a platform I deeply appreciate. In addition to that, I freelance as a back-end developer using NodeJS. 
+          I'm also pursuing a degree in Computer Science at PUC Goiás. While there have been some ups and downs—especially with subjects that seem 
+          disconnected from my professional growth—I recognize that the knowledge I'm gaining could serve as a foundation for future opportunities. 
+          Overall, I enjoy the journey.<br /><br />
+          In my free time, I like to spend time with my family and play sports like soccer.<br /><br />
+          And that's me.
         </p>
       </section>
+
 
       <section id="projects" className={styles.clients}>
         <h2>Clients & Projects with Outsystems</h2>

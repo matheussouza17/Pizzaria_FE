@@ -19,7 +19,7 @@
   border-radius: 10px;
   text-align: center;
   width: 250px;
-  height: 300px;
+  height: auto; /* Ajustado para comportar os botões */
   transition: transform 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -63,6 +63,40 @@
       max-height: 100px;
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  /* Estilos para os botões "Ver Projeto" e "Ver GitHub" */
+  .buttonsContainer {
+    display: flex;
+    gap: 1rem; /* Espaçamento entre os botões */
+    margin-top: 1rem;
+  }
+
+  .projectButton, .githubButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .projectButton {
+    background-color: var(--primary-color); /* Verde para o link do projeto */
+    color: white;
+
+    &:hover {
+      background-color: var(--secondary-color); /* Um pouco mais escuro ao passar o mouse */
+    }
+  }
+
+  .githubButton {
+    background-color: #333; /* Preto para o GitHub */
+    color: white;
+
+    &:hover {
+      background-color: #555; /* Um pouco mais claro ao passar o mouse */
     }
   }
 }
@@ -113,10 +147,18 @@
     }
   }
 }
-
 @media (max-width: 480px) {
   .clientCard {
-    width: 100%; // Ocupar largura total da tela em telas pequenas
+    width: 100%; 
     padding: 1rem;
+  }
+  
+  .buttonsContainer {
+    flex-direction: column; 
+    gap: 0.5rem; 
+  }
+
+  .projectButton, .githubButton {
+    font-size: 0.9rem;
   }
 }

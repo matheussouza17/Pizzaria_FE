@@ -53,25 +53,11 @@ const certifications = [
     link: 'https://www.udemy.com/certificate/UC-db01dc48-b8d4-4447-917a-b690e1f75f2e/'
   },
   { 
-    name: 'Active Listening', 
-    year: 2023, 
-    logo: '/imagesCetification/ActiveListening.png', 
-    description: 'Certified in The Power of Active Listening: Stop Hearing and Start Listening.',
-    link: 'https://www.udemy.com/certificate/UC-fc28b08c-9c1b-49a3-9909-0d8b623b6607/'
-  },
-  { 
     name: 'Business English', 
     year: 2023, 
     logo: '/imagesCetification/BusinessEnglish.png', 
     description: 'Certified in Business for English.',
     link: 'https://www.udemy.com/certificate/UC-f28ef91d-700f-41d9-ba09-1bf8232f6671/'
-  },
-  { 
-    name: 'Leadership Development', 
-    year: 2023, 
-    logo: '/imagesCetification/Leadership.png', 
-    description: 'Certified in Leadership Development.',
-    link: 'https://www.udemy.com/certificate/UC-f9e33dde-99ce-48a8-9e6d-90eb4c3ba7f7/'
   },
 ];
 
@@ -140,8 +126,8 @@ const CertificationCarousel: React.FC = () => {
             <Image
               src={certification.logo}
               alt={certification.name}
-              width={120}
-              height={120}
+              width={100}
+              height={100}
               style={{ objectFit: 'contain' }}
             />
             <div className={styles.clientInfo}>

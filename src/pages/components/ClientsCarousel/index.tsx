@@ -45,7 +45,7 @@ const clients = [
 const ClientsCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [itemsPerPage, setItemsPerPage] = useState(3); // Número de itens por página
+  const [itemsPerPage, setItemsPerPage] = useState(3); 
   const autoScrollDelay = 3000;
 
   const start = currentIndex * itemsPerPage;

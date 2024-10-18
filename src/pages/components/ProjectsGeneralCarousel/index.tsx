@@ -2,34 +2,35 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image'; // Otimização de imagens para Next.js
 import styles from './ProjectsGeneralCarousel.module.scss';
 
+// Lista de projetos com link para o GitHub e para o projeto em produção
 const projects = [
   { 
     name: 'Inner Friend', 
-    year: 2023, 
     logo: '/imagesGeneral/innerfriend.png', 
-    link: 'https://inner-friend-fe.vercel.app/',
+    link: 'https://inner-friend-fe.vercel.app/', 
+    github: 'https://github.com/orgs/TechMind-Innovations/repositories', 
     description: 'An AI assistant that simulates conversations with a virtual friend to provide emotional support.'
   },
   { 
     name: 'Pizzaria Backend', 
-    year: 2022, 
     logo: '/imagesGeneral/pizzaria.png', 
-    link: 'https://github.com/matheussouza17/Pizzaria-BackEnd',
-    description: 'A complete backend system for managing a pizzeria, including orders, inventory, and customer management.'
+    link: 'https://pizzaria-backend.vercel.app/', 
+    github: 'https://github.com/matheussouza17/Pizzaria-BackEnd',
+    description: 'A complete system for managing a pizzeria, including orders, inventory, and customer management.'
   },
   { 
     name: 'Invoice Workflow', 
-    year: 2021, 
     logo: '/imagesGeneral/workflow.png', 
-    link: 'https://github.com/matheussouza17/Workflows_BE',
-    description: 'A system for managing invoice approvals with AD integration for streamlined processes.'
+    link: 'https://workflow-system.vercel.app/', 
+    github: 'https://github.com/matheussouza17/Workflows_BE', 
+    description: 'A system for managing invoice approvals, having approval levels and permissions.'
   },
 ];
 
 const ProjectsCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [itemsPerPage, setItemsPerPage] = useState(3); // Número de itens por página
+  const [itemsPerPage, setItemsPerPage] = useState(3); 
   const autoScrollDelay = 3000;
 
   const start = currentIndex * itemsPerPage;
@@ -85,7 +86,6 @@ const ProjectsCarousel: React.FC = () => {
             className={styles.clientCard}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => window.open(project.link, '_blank')} // Redireciona ao clicar no card
             style={{ cursor: 'pointer' }} // Mostra o ponteiro de link ao passar o mouse
           >
             <Image
@@ -93,7 +93,7 @@ const ProjectsCarousel: React.FC = () => {
               alt={project.name}
               width={120}
               height={120}
-              style={{ objectFit: 'contain' }} // Atualizando o objectFit com a nova API
+              style={{ objectFit: 'contain' }}
             />  
 
             <div className={styles.clientInfo}>
@@ -101,6 +101,22 @@ const ProjectsCarousel: React.FC = () => {
               <p className={hoveredIndex === index ? styles.showDescription : ''}>
                 {project.description}
               </p>
+
+              {/* Botões para acessar o GitHub e o Projeto */}
+              <div className={styles.buttonsContainer}>
+                <button
+                  className={styles.projectButton}
+                  onClick={() => window.open(project.link, '_blank')} // Link para o projeto em produção
+                >
+                  Ver Projeto
+                </button>
+                <button
+                  className={styles.githubButton}
+                  onClick={() => window.open(project.github, '_blank')} // Link para o GitHub
+                >
+                  Ver GitHub
+                </button>
+              </div>
             </div>
           </div>
         ))}
