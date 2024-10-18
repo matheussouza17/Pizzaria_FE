@@ -19,6 +19,40 @@ export default function Home() {
           priority 
         />
         <h1 className={styles.name}>Matheus Henrique Souza</h1>
+        
+        <div className={styles.redes}>
+          <a href="https://www.linkedin.com/in/matheus-henrique-souza-a453a5231" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/general/Linkedin.png"
+              alt="Linkedin"
+              className={styles.socialIcon}
+              width={50}
+              height={50}
+              priority 
+            />
+          </a>
+          <a href="https://github.com/matheussouza17" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/general/GitHub.png"
+              alt="GitHub"
+              className={styles.socialIcon}
+              width={50}
+              height={50}
+              priority 
+            />
+          </a>
+          <a href="https://www.instagram.com/matheus_21_07/" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/general/Instagram.png"
+              alt="Instagram"
+              className={styles.socialIcon}
+              width={50}
+              height={50}
+              priority 
+            />
+          </a>
+        </div>
+        
         <p className={styles.title}>Outsystems Developer & Backend Developer</p>
         <NavBar />
       </header>
@@ -40,7 +74,6 @@ export default function Home() {
         </p>
       </section>
 
-
       <section id="projects" className={styles.clients}>
         <h2>Clients & Projects with Outsystems</h2>
         <ClientsCarousel />
@@ -57,21 +90,7 @@ export default function Home() {
       </section>     
 
       <footer id="footer" className={styles.footer}>
-        <p>Connect with me:</p>
-        <a 
-          href="https://www.linkedin.com/in/matheus-henrique-souza-a453a5231" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-        <a 
-          href="https://github.com/matheussouza17" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        <p>All rights reserved to Matheus Henrique Souza</p>
       </footer>
     </div>
   );

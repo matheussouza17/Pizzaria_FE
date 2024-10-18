@@ -21,9 +21,9 @@ const NavBar: React.FC = () => {
         <li>
           <button onClick={() => scrollToSection('certifications')}>Certifications</button>
         </li>
-        <li>
+        {/* <li>
           <button onClick={() => scrollToSection('footer')}>Contact</button>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
