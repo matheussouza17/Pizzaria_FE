@@ -1,0 +1,36 @@
+:root {
+  // Paleta de cores
+  --primary-color: #1e3a8a; // Azul escuro
+  --secondary-color: #0f172a; // Preto (quase)
+  --text-color: #f0f4f8; // Texto claro
+  --accent-color: #38bdf8; // Azul mais claro para detalhes
+  
+  // Tipografia
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-secondary);
+  color: var(--primary-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+

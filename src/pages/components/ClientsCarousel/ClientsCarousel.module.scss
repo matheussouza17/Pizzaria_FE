@@ -1,0 +1,122 @@
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.clientCard {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  height: 300px;
+  transition: transform 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 120px;
+    height: auto;
+    max-height: 180px;
+    min-width: 160px;
+    margin-bottom: 1rem;
+    object-fit: contain;
+    margin-top: auto;
+  }
+
+  .clientInfo {
+    text-align: center;
+
+    h3 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: var(--text-color);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.5s ease, max-height 1.5s ease, visibility 1.5s ease;
+    }
+
+    .showDescription {
+      max-height: 100px;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.navButton {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  &:disabled {
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+  }
+
+  &:first-of-type {
+    left: -40px;
+  }
+
+  &:last-of-type {
+    right: -40px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+
+    &.active {
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .clientCard {
+    width: 100%; // Ocupar largura total da tela em telas pequenas
+    padding: 1rem;
+  }
+}
