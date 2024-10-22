@@ -66,9 +66,9 @@ export default function Home() {
           I thrive on novelty and embrace new challenges. In recent years, life has taught me the value of adaptability, and development offers that flexibility, 
           which is why I am so passionate about it.<br /><br />
           Currently, I work as an OutSystems Developer, a platform I deeply appreciate. In addition to that, I freelance as a back-end developer using NodeJS. 
-          I'm also pursuing a degree in Computer Science at PUC Goiás. While there have been some ups and downs—especially with subjects that seem 
-          disconnected from my professional growth—I recognize that the knowledge I'm gaining could serve as a foundation for future opportunities. 
-          Overall, I enjoy the journey.<br /><br />
+          I am also studying Computer Science at PUC Goiás, which helps me with theoretical concepts that do not apply in practice, and this allows me to better 
+          understand why certain methods are used in practice. Although I have a good foundation in college, I need to improve outside of university to combine 
+          theory and practice in a harmonious learning experience.<br /><br />
           In my free time, I like to spend time with my family and play sports like soccer.<br /><br />
           And that's me.
         </p>

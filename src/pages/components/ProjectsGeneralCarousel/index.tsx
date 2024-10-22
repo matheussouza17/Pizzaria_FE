@@ -147,13 +147,13 @@ const ProjectsCarousel: React.FC = () => {
                   className={styles.projectButton}
                   onClick={() => window.open(project.link, '_blank')}
                 >
-                  Ver Projeto
+                  View Project
                 </button>
                 <button
                   className={styles.githubButton}
                   onClick={() => window.open(project.github, '_blank')}
                 >
-                  Ver GitHub
+                  View GitHub
                 </button>
               </div>
             </div>
